@@ -4,39 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+  <title>FI Share</title>
+  <link rel="icon" href="/images/icono.jpeg" type="image/jpeg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="prueba.css">
 </head>
 
 <body>
   <header class="flex justify-end gap-4 px-8 py-4">
-    <details class="relative" aria-disabled="true">
-      <summary class="list-none">
+    <details id="login-section" class="relative" aria-disabled="true">
+      <summary id="login-button" class="list-none cursor-pointer">
         <div class="relative w-10 h-10 rounded-full overflow-hidden shadow p-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="object-cover" viewBox="0 0 448 512">
-            <path
-              d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-          </svg>
-
+          <img id="login-avatar" src="/images/user-solid.svg" alt="no user avatar" class="object-cover">
         </div>
       </summary>
       <nav class="absolute right-full -translate-x-4 shadow-xl rounded-lg">
-        <p class="px-4 py-3">
-          <span class="font-bold">usuario</span>
-          <span class="text-sm truncate">usuario@github.com</span>
+        <p id="login-minidata-list" class="px-4 py-3 flex flex-col shadow-xl">
         </p>
         <hr />
         <ul class="">
           <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Repositorios Compartidos</a>
+            <a href="/repos-compartidos" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Repositorios Compartidos</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Mi GitHub</a>
+            <a id="mi-github" target="_blank" href="#" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Mi GitHub</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesión</a>
+            <button id="cerrar-sesion" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Cerrar Sesión</button>
           </li>
         </ul>
       </nav>
