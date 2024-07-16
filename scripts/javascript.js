@@ -31,13 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const paramentros = new URLSearchParams(window.location.search);
     
     if(pagina_actual === '/'){
-      document.getElementById('nav_materia').classList = 'hidden';
+      document.getElementById('materia').classList = 'ms-1 text-sm font-medium dark:text-gray-400';
+      document.getElementById('materia').removeAttribute('href');
       document.getElementById('nav_curso').classList = 'hidden';
       document.getElementById('nav_tp').classList = 'hidden';
       document.getElementById('nav_repo').classList = 'hidden';
-    }
-    else if(pagina_actual === '/cursos/'){
-      document.getElementById('curso').classList = 'ms-1 text-sm font-medium dark:text-gray-400'
+    }else if(pagina_actual === '/#materias'){
+      document.getElementById('materia').classList = 'ms-1 text-sm font-medium dark:text-gray-400';
+      document.getElementById('materia').removeAttribute('href');
+      document.getElementById('nav_curso').classList = 'hidden';
+      document.getElementById('nav_tp').classList = 'hidden';
+      document.getElementById('nav_repo').classList = 'hidden';
+    }else if(pagina_actual === '/cursos/'){
+      document.getElementById('curso').classList = 'ms-1 text-sm font-medium dark:text-gray-400';
       document.getElementById('curso').removeAttribute('href');
       document.getElementById('nav_tp').classList = 'hidden';
       document.getElementById('nav_repo').classList = 'hidden';
@@ -47,8 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '/#materias';
       }
       document.getElementById('materia').innerText = materia;
-    }
-    else if(pagina_actual === '/tps/'){
+    }else if(pagina_actual === '/tps/'){
       document.getElementById('tp').classList = 'ms-1 text-sm font-medium dark:text-gray-400'
       document.getElementById('tp').removeAttribute('href');
       document.getElementById('nav_repo').classList = 'hidden';
@@ -63,8 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = `/cursos/?materia=${materia}`;
       }
       document.getElementById('curso').innerText = curso;
-    }
-    else if(pagina_actual === '/repos/'){
+    }else if(pagina_actual === '/repos/'){
       const materia = paramentros.get('materia');
       if(materia === null){
         window.location.href = '/#materias';
@@ -79,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if(tp === null){
         window.location.href = `/tps/?materia=${materia}&curso=${curso}`;
       }
-      document.getElementById('tp').innerText = tp;
-      
+      document.getElementById('tp').innerText = tp;     
     }
 });
