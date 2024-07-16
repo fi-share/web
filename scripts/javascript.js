@@ -1,25 +1,26 @@
-const ACCESS_TOKEN_KEY = "access_token_fi_share";
+import {ACCESS_TOKEN_KEY, CLIENT_ID} from "../config.js"
 
 document.addEventListener("DOMContentLoaded", async () => {
   const access_token = localStorage.getItem(ACCESS_TOKEN_KEY);
   if (access_token) {
     try {
-        //obtener datos y mostrarlos
+      //obtener datos y mostrarlos
     } catch (error) {
       console.error(error);
     }
-  } else { // Colocar boton de iniciar sesion en header
+  } else {
+    // Colocar boton de iniciar sesion en header
     const btnLogin = document.createElement("button");
-    btnLogin.className = "ml-auto dark:bg-[#24292F] font-medium rounded-lg text-sm px-3 py-0 text-center inline-flex items-center dark:text-slate-400 hover:ring-2 dark:hover:ring-gray-500 transition duration-300 ease-in-out";
+    btnLogin.className =
+      "ml-auto dark:bg-[#24292F] font-medium rounded-lg text-sm px-3 py-0 text-center inline-flex items-center dark:text-slate-400 hover:ring-2 dark:hover:ring-gray-500 transition duration-300 ease-in-out";
     btnLogin.innerHTML = `
       Iniciar sesion con GitHub
       <img src="/images/github.svg" alt="GitHub Logo"  class="w-4 h-4 invert ml-2">
       `;
     // Asignar funcion de redirigir a github
     btnLogin.addEventListener("click", () => {
-      const clientId = "Ov23li0fsg8Uodd5Qy1d";
       const state = btoa(window.location.href);
-      window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&state=${state}`;
+      window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&state=${state}`;
     });
     document.querySelector("header").appendChild(btnLogin);
   }
