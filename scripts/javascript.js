@@ -26,11 +26,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-function login() {
-    document.getElementById('login_section').classList = 'hidden';
-    document.getElementById('avatar_section').classList = 'end-p1';
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     const pagina_actual = window.location.pathname;
     const paramentros = new URLSearchParams(window.location.search);
