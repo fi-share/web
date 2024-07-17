@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Colocar boton de iniciar sesion en header
     const btnLogin = document.createElement("button");
     btnLogin.className =
-      "ml-auto dark:bg-[#24292F] font-medium rounded-lg text-sm px-3 py-0 text-center inline-flex items-center dark:text-slate-400 hover:ring-2 dark:hover:ring-gray-500 transition duration-300 ease-in-out";
+      "ml-auto dark:bg-[#24292F] font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center dark:text-slate-400 hover:ring-2 dark:hover:ring-gray-500 transition duration-300 ease-in-out";
     btnLogin.innerHTML = `
       Iniciar sesion con GitHub
       <img src="/images/github.svg" alt="GitHub Logo"  class="w-4 h-4 invert ml-2">
