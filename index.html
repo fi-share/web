@@ -9,43 +9,17 @@
 </head>
 
 <body class="dark dark:bg-gray-950 scroll-smooth">
-  <header class="px-3 py-2 flex dark:bg-indigo-950 ">    
-    <nav class="flex">
-      <a href="/" class="flex items-center">
-        <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
-        <h1 class="text-2xl font-semibold dark:text-slate-50 tracking-tight">Fi Share</h1>
-      </a>
-
-      <ul class="inline-flex items-center space-x-1 md:space-x-2 ml-2">
-        <li id="nav_materia" class="inline-flex items-center">
-          <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <a href="/#materias" id="materia" class="text-sm font-medium dark:text-gray-400 dark:hover:text-white">Materias</a>
-        </li>
-        <li id="nav_curso" class="inline-flex items-center">
-          <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <a href="/cursos" id="curso" class="ms-1 text-sm font-medium dark:text-gray-400 dark:hover:text-white">Cursos</a>
-        </li>
-        <li id="nav_tp" class="inline-flex items-center">
-          <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <a href="/tps" id="tp" class="ms-1 text-sm font-medium dark:text-gray-400 dark:hover:text-white">TPs</a>
-        </li>
-        <li id="nav_repo" class="inline-flex items-center">
-          <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <p class="ms-1 text-sm font-medium dark:text-gray-400">Repositorios</p>
-        </li>
-      </ul>
+  <header class="px-3 py-2 h-14 flex items-center dark:bg-indigo-950 ">
+    <template id="temp-breadcrumb-item">
+      <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
+        <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
+      </div>
+    </template>
+    <nav id="breadcrumb" class="flex items-center">
     </nav>
   </header>
   
   <script src="scripts/login.js" type="module"></script>
-  <script src="scripts/javascript.js" type="module"></script>
+  <script src="scripts/breadcrumb.js" type="module"></script>
 </body>
 </html>
