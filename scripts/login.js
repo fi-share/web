@@ -31,13 +31,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             class="block p-2 hover:font-black">
             Mi GitHub
           </a>
-          <button id="cerrar-sesion" 
-            class="block w-full p-2 hover:font-bold">
-            Cerrar Sesión
-          </button>
         </nav>
       </section>
       `
+      const cerrarSesionBtn = document.createElement("button");
+      cerrarSesionBtn.addEventListener("click", () => {
+        localStorage.removeItem(ACCESS_TOKEN_KEY);
+        location.reload();
+      })
+      cerrarSesionBtn.className = "block w-full p-2 hover:font-bold";
+      cerrarSesionBtn.textContent = "Cerrar Sesión";
+      containerPerfil.querySelector("nav").appendChild(cerrarSesionBtn);
       document.querySelector("header").appendChild(containerPerfil)
     } catch (error) {
       console.error(error);
