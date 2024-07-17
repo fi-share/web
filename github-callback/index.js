@@ -37,6 +37,5 @@ fetch(URL_API + "/exchange-code", {
   }).catch((err)=> {
     alert(err);
   }).finally(() => {
-    alert(localStorage.getItem(ACCESS_TOKEN_KEY))
     location.href = urlOrigin;
   });
