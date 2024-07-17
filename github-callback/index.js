@@ -18,12 +18,25 @@ fetch(URL_API + "/exchange-code", {
   body: JSON.stringify({ code, redirect_uri: OAUTH_REDIRECT_URI }),
 })
   .then((resp) => resp.json())
-  .then((json) => {
+  .then(async (json) => {
     if (!json.access_token) {
-      alert(json.error_description);
-      location.href = location.origin;
+      throw Error(json.error_description);
     }
 
     localStorage.setItem(ACCESS_TOKEN_KEY, json.access_token);
+
+    // Si se redirecciona inmediatamente puede que el token no se haya guardado
+    await new Promise((resolve) => {
+      const intervalId = setInterval(() => {
+          if (localStorage.getItem(ACCESS_TOKEN_KEY)) {
+              clearInterval(intervalId);
+              resolve(); 
+          }
+      }, 50);
+    });
+  }).catch((err)=> {
+    alert(err);
+  }).finally(() => {
+    alert(localStorage.getItem(ACCESS_TOKEN_KEY))
+    location.href = urlOrigin;
   });
-location.href = urlOrigin;
