@@ -4,10 +4,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const access_token = localStorage.getItem(ACCESS_TOKEN_KEY);
   if (access_token) { //obtener datos y mostrarlos
     try {
-      const avatar_url = "/images/icono.jpeg";
-      const login = "fi-share";
-      const name = "";
-      const html_url = "https://github.com/fi-share";
+      const response = await fetch("https://api.github.com/user", {
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: `Bearer ${access_token}`,
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      });
+      const { avatar_url, login, name, html_url } = await response.json();
 
       const containerPerfil = document.createElement("details");
       containerPerfil.className = "relative";
@@ -18,9 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       </summary>
       <section class="absolute w-36 text-center right-full -translate-x-4 translate-y-4 text-indigo-900">
         <ul role="minidata-list" 
-        class="border border-indigo-900 rounded-t-lg mb-2 p-2 first:text-lg first:font-bold [&:not(:first-child)]:text-xs [&:not(:first-child)]:font-light">
-          ${(name ? `<li class="text-nowrap">${name}</li>` : "")}
-          <li class="text-nowrap">${login}</li>
+        class="border border-indigo-900 rounded-t-lg mb-2 p-2 first:text-lg first:font-bold [&:not(:first-child)]:text-xs [&:not(:first-child)]:font-extralight">
+          ${(name ? `<li class="block text-nowrap">${name}</li>` : "")}
+          <li class="block text-nowrap">${login}</li>
         </ul>
         <nav class="border border-indigo-900 rounded-b-lg py-3">
           <a href="${html_url}" target="_blank" href="#" 
