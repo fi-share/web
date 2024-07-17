@@ -8,8 +8,8 @@
   <title>FI Share</title>
 </head>
 
-<body class="dark dark:bg-gray-950 scroll-smooth">
-  <header class="px-3 py-2 h-14 flex items-center dark:bg-indigo-950">
+<body class="dark dark:bg-gray-950 scroll-smooth grid grid-cols-[auto_minmax(auto,2fr)] gap-x-16 overflow-x-hidden">
+  <header class="px-3 py-2 h-14 flex items-center dark:bg-indigo-950 col-span-full">
     <template id="temp-breadcrumb-item">
       <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
         <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
@@ -18,13 +18,13 @@
     <nav id="breadcrumb" class="flex items-center">
     </nav>
   </header>
-  <aside>
-
+  <aside class="text-white w-[33vw]">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus facere porro illo totam mollitia officiis quia recusandae obcaecati earum! Quis pariatur deleniti labore molestias qui eveniet numquam reprehenderit, blanditiis unde.
   </aside>
-  <main>
-    
+  <main class="text-white">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. At pariatur nesciunt quis velit inventore voluptatibus officia aperiam eius, maxime explicabo, iure voluptatem praesentium laborum? Sit labore hic quam dolores asperiores!
   </main>
-  <script src="scripts/login.js" type="module"></script>
-  <script src="scripts/breadcrumb.js" type="module"></script>
+  <script src="/scripts/login.js" type="module"></script>
+  <script src="/scripts/breadcrumb.js" type="module"></script>
 </body>
 </html>
