@@ -3,12 +3,13 @@ import { URL_API, ACCESS_TOKEN_KEY, OAUTH_REDIRECT_URI } from "../config.js";
 const urlParams = new URLSearchParams(location.search);
 const code = urlParams.get("code");
 const state = urlParams.get("state");
-const urlOrigin = atob(state);
 
-if (!code || !urlOrigin) {
+if (!code || !state) {
   alert("Github no respondío con lo esperado");
   location.href = location.origin;
 }
+
+const redirect = location.origin + atob(state);
 
 fetch(URL_API + "/exchange-code", {
   method: "POST",
@@ -37,5 +38,5 @@ fetch(URL_API + "/exchange-code", {
   }).catch((err)=> {
     alert(err);
   }).finally(() => {
-    location.href = urlOrigin;
+    location.href = redirect;
   });

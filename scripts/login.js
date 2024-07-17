@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       `;
     // Asignar funcion de redirigir a github
     btnLogin.addEventListener("click", () => {
-      const state = btoa(window.location.href);
-      window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&state=${state}`;
+      const state = btoa(location.pathname + location.search + location.hash);
+      location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&state=${state}`;
     });
     document.querySelector("header").appendChild(btnLogin);
   }
