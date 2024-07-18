@@ -1,33 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/images/icono.ico" type="image/ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>FI Share</title>
-  <link rel="stylesheet" href="/styles/resizer.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/icono.ico" type="image/ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FI Share</title>
+    <link rel="stylesheet" href="/styles/resizer.css" />
+  </head>
 
-<body class="dark dark:bg-gray-950 scroll-smooth grid grid-cols-[auto_minmax(auto,2fr)] gap-x-16 overflow-x-hidden">
-  <header class="px-3 py-2 h-14 flex items-center dark:bg-indigo-950 col-span-full">
-    <template id="temp-breadcrumb-item">
-      <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
-        <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
-      </div>
-    </template>
-    <nav id="breadcrumb" class="flex items-center">
-    </nav>
-  </header>
-  <aside class="text-white w-[33vw] min-w-[1vw] max-w-[99vw] border-white border-r relative resizable-x">
-    <span class="resizer-right"></span>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus facere porro illo totam mollitia officiis quia recusandae obcaecati earum! Quis pariatur deleniti labore molestias qui eveniet numquam reprehenderit, blanditiis unde.
-  </aside>
-  <main class="text-white">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. At pariatur nesciunt quis velit inventore voluptatibus officia aperiam eius, maxime explicabo, iure voluptatem praesentium laborum? Sit labore hic quam dolores asperiores!
-  </main>
-  <script src="/scripts/resizer.js" type="module"></script>
-  <script src="/scripts/login.js" type="module"></script>
-  <script src="/scripts/breadcrumb.js" type="module"></script>
-</body>
+  <body
+    class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[3.5rem_auto] grid-cols-[auto_auto] overflow-hidden h-[100vh]"
+  >
+    <header
+      class="px-3 py-2 flex items-center dark:bg-indigo-950 col-span-full"
+    >
+      <template id="temp-breadcrumb-item">
+        <div
+          class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center"
+        >
+          <a
+            href=""
+            class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"
+          ></a>
+        </div>
+      </template>
+      <nav id="breadcrumb" class="flex items-center"></nav>
+    </header>
+    <aside class="w-[33vw] min-w-[3vw] resizable-x">
+      <span class="resizer-right"></span>
+      <section class="border-white border-r absolute inset-0 overflow-y-auto">
+        <article class="p-8">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            facere porro illo totam mollitia officiis quia recusandae obcaecati
+            earum! Quis pariatur deleniti labore molestias qui eveniet numquam
+            reprehenderit, blanditiis unde. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Ducimus facere porro illo totam
+            mollitia officiis quia recusandae obcaecati earum! Quis pariatur
+            deleniti labore molestias qui eveniet numquam reprehenderit,
+            blanditiis unde. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Ducimus facere porro illo totam mollitia officiis quia
+            recusandae obcaecati earum! Quis pariatur deleniti labore molestias
+            qui eveniet numquam reprehenderit, blanditiis unde. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Ducimus facere porro
+            illo totam mollitia officiis quia recusandae obcaecati earum! Quis
+            pariatur deleniti labore molestias qui eveniet numquam
+            reprehenderit, blanditiis unde. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Ducimus facere porro illo totam
+            mollitia officiis quia recusandae obcaecati earum! Quis pariatur
+            deleniti labore molestias qui eveniet numquam reprehenderit,
+            blanditiis unde.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            facere porro illo totam mollitia officiis quia recusandae obcaecati
+            earum! Quis pariatur deleniti labore molestias qui eveniet numquam
+            reprehenderit, blanditiis unde. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Ducimus facere porro illo totam
+            mollitia officiis quia recusandae obcaecati earum! Quis pariatur
+            deleniti labore molestias qui eveniet numquam reprehenderit,
+            blanditiis unde. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Ducimus facere porro illo totam mollitia officiis quia
+            recusandae obcaecati earum! Quis pariatur deleniti labore molestias
+            qui eveniet numquam reprehenderit, blanditiis unde. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Ducimus facere porro
+            illo totam mollitia officiis quia recusandae obcaecati earum! Quis
+            pariatur deleniti labore molestias qui eveniet numquam
+            reprehenderit, blanditiis unde. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Ducimus facere porro illo totam
+            mollitia officiis quia recusandae obcaecati earum! Quis pariatur
+            deleniti labore molestias qui eveniet numquam reprehenderit,
+            blanditiis unde.
+          </p>
+        </article>
+      </section>
+    </aside>
+    <main class="bg-transparent">
+      <section class="overflow-y-auto">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. At pariatur
+        nesciunt quis velit inventore voluptatibus officia aperiam eius, maxime
+        explicabo, iure voluptatem praesentium laborum? Sit labore hic quam
+        dolores asperiores!
+      </section>
+    </main>
+    <script src="/scripts/resizer.js" type="module"></script>
+    <script src="/scripts/login.js" type="module"></script>
+    <script src="/scripts/breadcrumb.js" type="module"></script>
+  </body>
 </html>
