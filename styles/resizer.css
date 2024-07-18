@@ -1,16 +1,17 @@
 .resizable-x {
-    overflow-x: visible;
     position: relative;
 }
 .resizer-right {
-    content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
+    z-index: 10;
+    top: 1rem;
+    bottom: 1rem;
     right: 0;
     width: 2rem;
-    transform: translateX(50%);
     background: transparent;
     cursor: ew-resize;
     user-select: none;
+}
+.resizer-right + section {
+    right: 2rem;
 }

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resize(e) {
         if (isResizing) {
-            resizable.style.width = `${e.pageX - resizable.getBoundingClientRect().left}px`;
+            resizable.style.width = `${e.pageX + 1 - resizable.clientLeft}px`;
         }
     }
     
