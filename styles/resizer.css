@@ -12,6 +12,6 @@
     cursor: ew-resize;
     user-select: none;
 }
-.resizer-right + section {
+.resizer-right + article {
     right: 2rem;
 }
