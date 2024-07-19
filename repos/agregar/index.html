@@ -24,58 +24,32 @@
           <fieldset class="w-96 border border-white px-2 py-1">
             <legend class="dark:text-white text-xl font-semibold block mx-auto px-2">Información</legend>
             <div class="mb-2">
-                <label for="name" class="block mb-2 text-lg  text-gray-900 dark:text-white">Titulo</label>
-                <input type="text" name="name" id="name" class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Titulo del repositorio" required>
+                <label for="titulo" class="block mb-2 text-lg  text-gray-900 dark:text-white">Titulo</label>
+                <input type="text" name="titulo" id="titulo" class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Titulo del repositorio" required>
             </div>
             <div class="mb-2">
-                <label for="description" class="block mb-2 dark:text-white">Descripción</label>
-                <textarea id="description" rows="8" class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Descripción del repositorio"></textarea>
+                <label for="descripcion" class="block mb-2 dark:text-white">Descripción</label>
+                <textarea name="descripcion" id="descripcion" rows="8" class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Descripción del repositorio"></textarea>
             </div>
           </fieldset>
-          <fieldset class="w-[36rem] border border-white px-2 py-1">
+          <fieldset id="seleccionar-repo" class="w-[36rem] border border-white px-2 py-1">
             <legend class="dark:text-white text-xl font-semibold block mx-auto px-2">Seleccionar repositorio</legend>
-            <div class="mb-2">
-              <input type="radio" class="peer hidden" id="repo-1" name="repo" value="https://github.com/fi-share/web">
-              <label for="repo-1" class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700">
-                /fi-share/web
-              </label>
-            </div>
-            <div class="mb-2">
-
-              <input type="radio" class="peer hidden" id="repo-2" name="repo" value="https://github.com/fi-share/web">
-              <label for="repo-2" class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700">
-                /fi-share/web
-              </label>
-            </div>
-            <div class="mb-2">
-
-              <input type="radio" class="peer hidden" id="repo-3" name="repo" value="https://github.com/fi-share/web">
-              <label for="repo-3" class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700">
-                /fi-share/web
-              </label>
-            </div>
-            <div class="mb-2">
-
-              <input type="radio" class="peer hidden" id="repo-4" name="repo" value="https://github.com/fi-share/web">
-              <label for="repo-4" class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700">
-                /fi-share/web
-              </label>
-            </div>
-            <div class="mb-2">
-
-              <input type="radio" class="peer hidden" id="repo-5" name="repo" value="https://github.com/fi-share/web">
-              <label for="repo-5" class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700">
-                /fi-share/web
-              </label>
-            </div>
+            <template id="temp-repo">
+              <div class="mb-2">
+                <input type="radio" class="peer hidden" id="" name="full_name" value="" required>
+                <label for="" class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700">
+                </label>
+              </div>
+            </template>
             </fieldset>
         </div>
         <button type="submit" class="px-5 py-2.5 mt-8 text-center text-white rounded-sm hover:bg-indigo-950 border border-white">
-            Add product
+            Agregar
         </button>
     </form>
   </main>
   
+  <script src="form.js" type="module"></script>
   <script src="/scripts/login.js" type="module"></script>
   <script src="/scripts/breadcrumb.js" type="module"></script>
 </body>
