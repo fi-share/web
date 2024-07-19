@@ -23,37 +23,40 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await response.json();
     const tempContent = document.getElementById("temp-repo").content
     const fieldSelecRepo = document.getElementById("seleccionar-repo")
-    const idUsuario = document.querySelector('input[type="hidden"][name="id"]').value
     data.forEach(({description, full_name, name, id, owner}) => {
-        if (owner.id == idUsuario) {
-            console.log(description,full_name,name,id);
-            const repo = tempContent.cloneNode(true).firstElementChild;
+        const repo = tempContent.cloneNode(true).firstElementChild;
 
-            function completarDatosRepo() {
-                document.getElementById("titulo").value = name
-                if (description)
-                    document.getElementById("descripcion").textContent = description
-                console.log("click");
-            }
-
-            const input = repo.querySelector("input");
-            input.id = id
-            input.value = full_name
-            const label = repo.querySelector("label")
-            label.setAttribute("for", id)
-            label.textContent = full_name
-            label.addEventListener("click", completarDatosRepo)
-            
-            fieldSelecRepo.appendChild(repo);
+        function completarDatosRepo() {
+            document.getElementById("titulo").value = name
+            document.getElementById("id_repo").value = id
+            document.getElementById("id_usuario").value = owner.id
+            if (description)
+                document.getElementById("descripcion").textContent = description
+            console.log("click");
         }
+
+        const input = repo.querySelector("input");
+        input.id = id
+        input.value = full_name
+        const label = repo.querySelector("label")
+        label.setAttribute("for", id)
+        label.textContent = full_name
+        label.addEventListener("click", completarDatosRepo)
         
+        fieldSelecRepo.appendChild(repo);
     });
+    if (!data.length) {
+        const mensaje = document.createElement("p")
+        mensaje.textContent = "Revise si los repositorios que tiene son públicos."
+        fieldSelecRepo.appendChild(mensaje)
+    }
     document.getElementById("form-agregar").addEventListener("submit", async (e) => {
         e.preventDefault();
-        console.log(e);
         const formData = new FormData(e.target);
-        formData.append("id_usuario", idUsuario)
-        const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios`, {
+        const idRepo = formData.get("id_repo")
+        formData.delete("id_repo")
+        console.log(formData);
+        const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios/${idRepo}`, {
             method: "POST",
             body: formData,
         })
@@ -63,6 +66,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             alert("Ocurrió un error")
         }
-        console.log(formData);
     })
 })
