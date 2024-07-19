@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           "X-GitHub-Api-Version": "2022-11-28",
         },
       });
-      const { avatar_url, login, name, html_url } = await response.json();
+      const { avatar_url, login, name, html_url, id } = await response.json();
 
       const containerPerfil = document.createElement("details");
       containerPerfil.className = "relative";
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         class="border border-indigo-900 rounded-t-lg mb-2 p-2 first:text-lg first:font-bold [&:not(:first-child)]:text-xs [&:not(:first-child)]:font-extralight">
           ${(name ? `<li class="block text-nowrap">${name}</li>` : "")}
           <li class="block text-nowrap">${login}</li>
+          <input type="hidden" name="id" value="${id}">
         </ul>
         <nav class="border border-indigo-900 rounded-b-lg py-3">
           <a href="${html_url}" target="_blank" href="#" 
