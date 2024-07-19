@@ -13,6 +13,32 @@ document.addEventListener("DOMContentLoaded", async () => {
           "X-GitHub-Api-Version": "2022-11-28",
         },
       });
-    const data = await response.json(); 
-    console.log(data)
+    const data = await response.json();
+    const tempContent = document.getElementById("temp-repo").content
+    const fieldSelecRepo = document.getElementById("seleccionar-repo")
+    data.forEach(({description, full_name, name, id, owner}) => {
+        if (owner.id == document.querySelector('input[type="hidden"][name="id"]').value) {
+            console.log(description,full_name,name,id);
+            const repo = tempContent.cloneNode(true).firstElementChild;
+
+            function completarDatosRepo() {
+                document.getElementById("titulo").value = name
+                if (description)
+                    document.getElementById("descripcion").textContent = description
+                console.log("click");
+            }
+
+            const input = repo.querySelector("input");
+            input.id = id
+            input.value = full_name
+            const label = repo.querySelector("label")
+            label.setAttribute("for", id)
+            label.textContent = full_name
+            label.addEventListener("click", completarDatosRepo)
+            
+            fieldSelecRepo.appendChild(repo);
+        }
+        
+    });
 })
+
