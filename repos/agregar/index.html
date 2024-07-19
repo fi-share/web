@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/icono.ico" type="image/ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>FI Share</title>
+</head>
+
+<body class="dark dark:bg-gray-950 scroll-smooth">
+  <header class="px-3 py-2 h-14 flex items-center justify-between dark:bg-indigo-950 ">
+    <template id="temp-breadcrumb-item">
+      <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
+        <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
+      </div>
+    </template>
+    <nav id="breadcrumb" class="flex items-center">
+    </nav>
+  </header>
+  
+  <script src="/scripts/login.js" type="module"></script>
+  <script src="/scripts/breadcrumb.js" type="module"></script>
+</body>
+</html>
