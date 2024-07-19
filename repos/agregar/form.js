@@ -42,3 +42,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 })
 
+document.getElementById("form-agregar").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    console.log(e);
+    const formdata = new FormData(e.target);
+    console.log(formdata);
+})
