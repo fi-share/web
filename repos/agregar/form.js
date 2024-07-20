@@ -53,10 +53,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("form-agregar").addEventListener("submit", async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const idRepo = formData.get("id_repo")
-        formData.delete("id_repo")
         console.log(formData);
-        const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios/${idRepo}`, {
+        const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios`, {
             method: "POST",
             body: formData,
         })
