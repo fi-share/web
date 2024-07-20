@@ -12,10 +12,6 @@
     cursor: ew-resize;
     user-select: none;
 }
-<<<<<<< HEAD
 .resizer-right + article {
-=======
-.resizer-right + section {
->>>>>>> f01c456949567e88fa44bf9fa2e40d0396f697ce
     right: 2rem;
 }
