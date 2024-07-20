@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const resp = await fetch(`${URL_API}/tps/${idTP}`)
         const {repositorios} = await resp.json()
         console.log(repositorios);
-        repositorios.forEach(({id, full_name, descripcion, id_usuario}) => {
+        repositorios.forEach(({id, full_name, titulo, descripcion, id_usuario}) => {
             const carta = tempContent.cloneNode(true).firstElementChild;
-            carta.querySelector("#titulo").textContent = full_name;
+            carta.querySelector("#titulo").textContent = titulo;
             carta.querySelector("#descripcion").textContent = descripcion;
-            carta.querySelector("#url-repo").setAttribute("href", GITHUB_URL + full_name);
+            carta.querySelector("#url-repo").setAttribute("href", GITHUB_URL + "/" +  full_name);
 
             container.appendChild(carta)
         });
