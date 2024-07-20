@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const idTP = params.get("tp-id")
     if (idTP) {
         const resp = await fetch(`${URL_API}/tps/${idTP}`)
-        const {nombre, descripcion} = await resp.json()
-        document.getElementById("nombre").textContent = nombre
-        document.getElementById("descripcion").textContent = descripcion
+        const {descripcion} = await resp.json()
+        document.querySelector("article").innerHTML = descripcion
     }
 })
