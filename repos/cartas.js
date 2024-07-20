@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             const contributors = await contributorsResponse.json();
             
             const carta = tempContent.cloneNode(true).firstElementChild;
-            carta.querySelector("#titulo").textContent = titulo;
-            carta.querySelector("#descripcion").textContent = descripcion;
+            carta.querySelector("#titulo").value = titulo;
+            carta.querySelector("#descripcion").value = descripcion;
             carta.querySelector("#url-repo").setAttribute("href", GITHUB_URL + "/" +  full_name);
             if ((id_usuario_en_maquina) && (contributors.some(({id})=> id == id_usuario_en_maquina) || id_usuario == id_usuario_en_maquina)) {
                 const button = document.createElement("button");

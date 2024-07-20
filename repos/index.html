@@ -32,8 +32,7 @@
       <span class="resizer-right"></span>
       <article
         class="absolute inset-0 overflow-y-auto p-8 border-r border-white"
-      >
-      </article>
+      ></article>
     </aside>
     <main class="bg-transparent relative">
       <section
@@ -41,14 +40,29 @@
         class="absolute inset-0 overflow-y-auto p-8 flex gap-16 flex-wrap justify-evenly items-center"
       >
         <template id="temp-carta">
-          <div class="w-96 p-4 rounded-lg border border-gray-700 shadow bg-gray-800 relative">
-            <h2
-              id="titulo"
-              class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+          <div
+            class="w-96 p-4 rounded-lg border border-gray-700 shadow bg-gray-800 relative"
+          >
+            <form
+              aria-disabled="true"
+              class="shadow-[inset_0_2px_4px_0_#000] aria-disabled:shadow-none block w-full p-2 mb-2"
             >
-            </h2>
-            <p id="descripcion" class="mb-3 text-gray-500 dark:text-gray-400">
-            </p>
+              <input
+                id="titulo"
+                disabled="true"
+                class="block w-full bg-transparent mb-3 outline-none text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+                name="titulo"
+              />
+              <textarea
+                id="descripcion"
+                disabled="true"
+                rows="1"
+                name="descripcion"
+                oninput="auto_grow_y(this)"
+                class="block w-full outline-none max-h-72 resize-none bg-transparent text-gray-500 dark:text-gray-400"
+              >
+              </textarea>
+            </form>
             <a
               id="url-repo"
               href="#"
@@ -58,7 +72,6 @@
               <span class="font-black text-xl mr-4">➟</span>
               Repositorio
             </a>
-            </section>
           </div>
         </template>
       </section>
@@ -66,6 +79,7 @@
     <script src="acciones_repos.js" type="module"></script>
     <script src="mostrar_tp.js" type="module"></script>
     <script src="cartas.js" type="module"></script>
+    <script src="/scripts/textarea.js"></script>
     <script src="/scripts/resizer.js" type="module"></script>
     <script src="/scripts/login.js" type="module"></script>
     <script src="/scripts/breadcrumb.js" type="module"></script>
