@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("container-cartas");
   const idTP = params.get("tp-id");
   if (idTP) {
-    const resp = await fetch(`${URL_API}/tps/${idTP}`);
-    const { repositorios } = await resp.json();
+    const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios`);
+    const repositorios = await resp.json();
     const inputHiddenId = document.querySelector(
       'input[type="hidden"][name="id"]'
     );
@@ -75,16 +75,30 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </svg>
                     `;
             submitBtn.onclick = async () => {
-              const formData = new FormData(form);
-              await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
-                method: "PUT",
-                body: formData,
-                headers: {
-                  Authorization: `Bearer ${access_token}`,
-                },
-              })
-                .catch((err) => alert(err))
-                .finally(() => location.reload());
+                const formData = new FormData(form);
+                try {
+                    const response = await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
+                      method: "PUT",
+                      body: formData,
+                      headers: {
+                          Authorization: `Bearer ${access_token}`,
+                        },
+                    })
+
+                    const { titulo, descripcion } = await response.json()
+                    tituloElement.value = titulo;
+                    descripcionElement.value = descripcion;
+
+                    form.setAttribute("aria-disabled", "");
+                    tituloElement.setAttribute("disabled", "");
+                    descripcionElement.setAttribute("disabled", "");
+
+                    floats.innerHTML = "";
+                    floats.append(editBtn);
+                    
+                } catch (error) {
+                    alert(error)
+                }
             };
             floats.appendChild(submitBtn);
 
@@ -114,15 +128,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </svg>
                     `;
             deleteBtn.onclick = async () => {
-              const formData = new FormData();
-              await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
-                method: "DELETE",
-                headers: {
-                  Authorization: `Bearer ${access_token}`,
-                },
-              })
-                .catch((err) => alert(err))
-                .finally(() => location.reload());
+                try {
+                    await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
+                        method: "DELETE",
+                        headers: {
+                            Authorization: `Bearer ${access_token}`,
+                        },
+                    })
+                    alert(`${titulo} eliminado de FI Share correctamente`)
+                } catch (error) {
+                    alert(error);
+                } finally {
+                    location.reload();
+                }
             };
             floats.appendChild(deleteBtn);
           };
