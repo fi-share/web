@@ -52,19 +52,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     document.getElementById("form-agregar").addEventListener("submit", async (e) => {
         e.preventDefault();
+        e.submitter.setAttribute("disabled", "true")
         const formData = new FormData(e.target);
         try {
-            await fetch(`${URL_API}/tps/${idTP}/repositorios`, {
+            const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${access_token}`,
                 },
                 body: formData,
             })
+            if (!resp.ok)
+                throw new Error(resp.statusText)
             alert("Agregado correctamente")
             location.href = "/repos" + location.search            
         } catch (error) {
-            alert("Ocurrió un error")
+            alert(error)
+            e.submitter.removeAttribute("disabled")
         }
     })
 })
