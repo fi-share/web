@@ -62,6 +62,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
                         </svg>
                     `
+                    submitBtn.onclick = async () => {
+                        const formData = new FormData(form)
+                        formData.append("id_usuario", id_usuario_en_maquina)
+                        await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
+                            method: "PUT",
+                            body: formData
+                        })
+                    }
                     floats.appendChild(submitBtn)
                     
                     const cancelBtn = document.createElement("button")
