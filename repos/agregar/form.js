@@ -53,15 +53,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("form-agregar").addEventListener("submit", async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        console.log(formData);
-        const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios`, {
-            method: "POST",
-            body: formData,
-        })
-        if (resp.status >= 200 && resp.status < 300) {
+        try {
+            await fetch(`${URL_API}/tps/${idTP}/repositorios`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+                body: formData,
+            })
             alert("Agregado correctamente")
-
-        } else {
+            location.href = "/repos" + location.search            
+        } catch (error) {
             alert("Ocurrió un error")
         }
     })
