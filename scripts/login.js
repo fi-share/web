@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       <summary class="list-none cursor-pointer">
         <img src="${avatar_url}" alt="avatar" class="w-10 h-10 rounded-full shadow-2xl p-1">
       </summary>
-      <section class="absolute w-36 text-center right-full -translate-x-4 translate-y-4 text-indigo-900">
+      <section class="absolute w-36 text-center right-full -translate-x-4 translate-y-4 text-indigo-900 z-50">
         <ul role="minidata-list" 
-        class="border border-indigo-900 rounded-t-lg mb-2 p-2 first:text-lg first:font-bold [&:not(:first-child)]:text-xs [&:not(:first-child)]:font-extralight">
+        class="border border-indigo-900 bg-gray-950 rounded-t-lg mb-2 p-2 first:text-lg first:font-bold [&:not(:first-child)]:text-xs [&:not(:first-child)]:font-extralight">
           ${(name ? `<li class="block text-nowrap">${name}</li>` : "")}
           <li class="block text-nowrap">${login}</li>
           <input type="hidden" name="id" value="${id}">
         </ul>
-        <nav class="border border-indigo-900 rounded-b-lg py-3">
+        <nav class="border border-indigo-900 bg-gray-950 rounded-b-lg py-3">
           <a href="${html_url}" target="_blank" href="#" 
             class="block p-2 hover:font-black">
             Mi GitHub
