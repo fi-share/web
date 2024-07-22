@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const apiEndpoint = primerParametro[0].replace("-id", "s") // materias, cursos o tps
       const id = primerParametro[1];
       console.log(`${URL_API}/${apiEndpoint}/${id}`)
-      // const resp = await fetch(`${URL_API}/${primerParametro[0]}/${primerParametro[1]}`)
-      // const { repositorio, tp, curso, materia } = await resp.json()
+      const resp = await fetch(`${URL_API}/${apiEndpoint}/${id}`)
+      console.log(resp)
+      return await resp.json()
     }
     return {}
   }
@@ -21,22 +22,30 @@ document.addEventListener("DOMContentLoaded", async () => {
   switch (location.pathname) {
     case "/repos/": {
       const item = tempContent.cloneNode(true).firstElementChild;
-      item.querySelector("a").textContent = "Repositorios";
+      const anchor = item.querySelector("a")
+      anchor.textContent = "Repositorios";
+      anchor.setAttribute("href", `/repos?tp-id=${tp.id}`)
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
     case "/tps/": {
       const item = tempContent.cloneNode(true).firstElementChild;
-      item.querySelector("a").textContent = tp ? tp : "TPs";
+      const anchor = item.querySelector("a")
+      anchor.textContent = tp ? tp.nombre : "TPs";
+      anchor.setAttribute("href", tp ? `/tps?curso-id=${curso.id}` : "/tps")
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
     case "/cursos/": {
       const item = tempContent.cloneNode(true).firstElementChild;
-      item.querySelector("a").textContent = curso ? curso : "Cursos";
+      const anchor = item.querySelector("a")
+      anchor.textContent = curso ? curso.nombre : "Cursos";
+      anchor.setAttribute("href", curso ? `/cursos?materia-id=${materia.id}` : "")
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
-    case "/materias": {
+    case "/materias/": {
       const item = tempContent.cloneNode(true).firstElementChild;
-      item.querySelector("a").textContent = materia ? materia : "Materias";
+      const anchor = item.querySelector("a")
+      anchor.textContent = materia ? materia.nombre : "Materias";
+      anchor.setAttribute("href", "/materias")
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
     case "/": {
