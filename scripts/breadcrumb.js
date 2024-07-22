@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const anchor = item.querySelector("a")
       anchor.textContent = tp ? tp.nombre : "TPs";
       anchor.setAttribute("href", tp ? `/tps?curso-id=${curso.id}` : "/tps")
+      anchor.setAttribute("title", tp ? `TPs de ${curso.nombre}` : "")
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
     case "/cursos/": {
@@ -44,6 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const anchor = item.querySelector("a")
       anchor.textContent = curso ? curso.nombre : "Cursos";
       anchor.setAttribute("href", curso ? `/cursos?materia-id=${materia.id}` : "")
+      anchor.setAttribute("title", curso ? `Cursos de ${materia.nombre}` : "")
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
     case "/materias/": {
@@ -51,11 +53,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       const anchor = item.querySelector("a")
       anchor.textContent = materia ? materia.nombre : "Materias";
       anchor.setAttribute("href", "/materias")
+      anchor.setAttribute("title", "Todas las materias")
       breadcrumb.insertAdjacentElement("afterbegin", item);
     }
     case "/": {
       const item = tempContent.cloneNode(true).firstElementChild;
-      item.querySelector("a").innerHTML = `
+      const anchor = item.querySelector("a")
+      anchor.setAttribute("href", "/")
+      anchor.setAttribute("title", "Inicio")
+      anchor.innerHTML = `
         <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
         <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
       `;
