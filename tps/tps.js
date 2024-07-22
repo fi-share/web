@@ -4,6 +4,8 @@ const params = new URLSearchParams(window.location.search);
 const id_curso = params.get('curso-id');
 
 function mostrar_desc(descripcion){
+    const aside = document.getElementById("aside");
+    aside.scrollTop = 0;
     const contenido = document.getElementById("descripcion");
     contenido.textContent = descripcion;
 }
