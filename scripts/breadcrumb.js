@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { tp, curso, materia } = await getItems();
 
   switch (location.pathname) {
+    case "/repos/agregar/": {
+      const item = tempContent.cloneNode(true).firstElementChild;
+      item.querySelector("a").textContent = "Agregar";
+      breadcrumb.insertAdjacentElement("afterbegin", item);
+    }
     case "/repos/": {
       const item = tempContent.cloneNode(true).firstElementChild;
       const anchor = item.querySelector("a")

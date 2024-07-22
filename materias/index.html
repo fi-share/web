@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/icono.ico" type="image/ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>FI Share</title>
+</head>
+
+<body class="dark dark:bg-gray-950">
+  <header class="px-3 py-2 h-14 flex items-center justify-between dark:bg-indigo-950 ">
+    <template id="temp-breadcrumb-item">
+      <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
+        <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
+      </div>
+    </template>
+    <nav id="breadcrumb" class="flex items-center">
+    </nav>
+  </header>
+
+  <div class="flex min-h-screen">
+    <aside id="default-sidebar" class="w-2/12" aria-label="Sidebar">
+      <div class="h-full overflow-y-auto border-r border-indigo-950">
+        <p class="text-lg dark:text-white px-3 py-3">Filtrar por:</p>
+        <h3 class="px-4 mb-1 font-semibold text-gray-900 dark:text-white">Año</h3>
+        <form id="filtro">
+          <ul class="w-44 mx-auto text-sm font-medium rounded-lg dark:bg-gray-800 dark:text-white">
+              <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                  <div class="flex items-center ps-3">
+                      <input id="2024" type="checkbox" name="anio_selec" value="2024" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="2024" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">2024</label>
+                  </div>
+              </li>
+              <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                <div class="flex items-center ps-3">
+                    <input id="2023" type="checkbox" name="anio_selec" value="2023" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <label for="2023" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">2023</label>
+                </div>
+            </li>
+            <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+              <div class="flex items-center ps-3">
+                  <input id="2022" type="checkbox" name="anio_selec" value="2022" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                  <label for="2022" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">2022</label>
+              </div>
+            </li>
+            <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+              <div class="flex items-center ps-3">
+                  <input id="2021" type="checkbox" name="anio_selec" value="2021" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                  <label for="2021" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">2021</label>
+              </div>
+            </li>
+            <li class="w-full rounded-t-lg dark:border-gray-600">
+              <div class="flex items-center ps-3">
+                  <input id="2020" type="checkbox" name="anio_selec" value="2020" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                  <label for="2020" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">2020</label>
+              </div>
+            </li>
+          </ul>
+
+          <h3 class="px-4 mt-4 mb-1 font-semibold text-gray-900 dark:text-white">Cuatrimestre</h3>
+            <ul class="w-44 mx-auto text-sm font-medium rounded-lg dark:bg-gray-800 dark:text-white">
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <input id="primer_cuatrimestre" name="cuatri_selec" type="checkbox" value="1" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="primer_cuatrimestre" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">1°Cuatrimestre</label>
+                    </div>
+                </li>
+                <li class="w-full rounded-t-lg dark:border-gray-600">
+                  <div class="flex items-center ps-3">
+                      <input id="segundo_cuatrimestre" name="cuatri_selec" type="checkbox" value="2" class="w-4 h-4 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="segundo_cuatrimestre" class="w-full py-3 ms-2 text-sm font-medium dark:text-gray-300">2°Cuatrimestre</label>
+                  </div>
+              </li>
+            </ul>
+        </form>
+        
+      </div>
+    </aside>
+
+    <main class="flex-1">
+      <p class="font-sans font-semibold m-6 lg:text-4xl tracking-normal text-center w-4/6 mx-auto dark:text-white">Materias</p>
+      <div id="materias"></div>
+    </main>
+  </div>
+
+  <script src="materias.js" type="module"></script>
+  <script src="/scripts/login.js" type="module"></script>
+  <script src="/scripts/breadcrumb.js" type="module"></script>
+</body>
+</html>
