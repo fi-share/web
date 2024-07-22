@@ -1,0 +1,17 @@
+.resizable-x {
+    position: relative;
+}
+.resizer-right {
+    position: absolute;
+    z-index: 10;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0;
+    width: 2rem;
+    background: transparent;
+    cursor: ew-resize;
+    user-select: none;
+}
+.resizer-right + article {
+    right: 2rem;
+}
