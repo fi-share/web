@@ -54,7 +54,7 @@ function parse_data(data){
             tp.append(data.curso.tps[i].nombre);
 
             const boton_desc = document.createElement("button");
-            boton_desc.setAttribute("class", "text-white focus:outline-none font-medium rounded-lg text-sm px-4 py-2 me-2 mb-2 dark:bg-gray-900 dark:hover:bg-gray-700 focus:ring-4 dark:focus:ring-gray-600 dark:border-gray-700");
+            boton_desc.setAttribute("class", "text-white font-medium rounded-lg text-sm px-4 py-2 me-2 mb-2 dark:bg-gray-900 dark:hover:bg-gray-800 hover:ring-2 hover:ring-gray-500");
             boton_desc.innerText = "Descripción"
             boton_desc.addEventListener("click", () => mostrar_desc(data.curso.tps[i].descripcion));
             boton_desc.addEventListener("click", () => mostrar_nombre(data.curso.tps[i].nombre))
