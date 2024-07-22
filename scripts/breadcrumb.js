@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     anchor.setAttribute("href", "/")
     anchor.setAttribute("title", "Inicio")
     anchor.innerHTML = `
-    <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
+    <img src="https://fi-share.github.io/web/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
     <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
     `;
     breadcrumb.insertAdjacentElement("afterbegin", item);
