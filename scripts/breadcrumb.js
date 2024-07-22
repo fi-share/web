@@ -19,53 +19,57 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const { tp, curso, materia } = await getItems();
 
-  switch (location.pathname) {
-    case "/repos/agregar/": {
-      const item = tempContent.cloneNode(true).firstElementChild;
-      item.querySelector("a").textContent = "Agregar";
-      breadcrumb.insertAdjacentElement("afterbegin", item);
-    }
-    case "/repos/": {
-      const item = tempContent.cloneNode(true).firstElementChild;
-      const anchor = item.querySelector("a")
-      anchor.textContent = "Repositorios";
-      anchor.setAttribute("href", `/repos?tp-id=${tp.id}`)
-      breadcrumb.insertAdjacentElement("afterbegin", item);
-    }
-    case "/tps/": {
-      const item = tempContent.cloneNode(true).firstElementChild;
-      const anchor = item.querySelector("a")
-      anchor.textContent = tp ? tp.nombre : "TPs";
-      anchor.setAttribute("href", tp ? `/tps?curso-id=${curso.id}` : "/tps")
-      anchor.setAttribute("title", tp ? `TPs de ${curso.nombre}` : "")
-      breadcrumb.insertAdjacentElement("afterbegin", item);
-    }
-    case "/cursos/": {
-      const item = tempContent.cloneNode(true).firstElementChild;
-      const anchor = item.querySelector("a")
-      anchor.textContent = curso ? curso.nombre : "Cursos";
-      anchor.setAttribute("href", curso ? `/cursos?materia-id=${materia.id}` : "")
-      anchor.setAttribute("title", curso ? `Cursos de ${materia.nombre}` : "")
-      breadcrumb.insertAdjacentElement("afterbegin", item);
-    }
-    case "/materias/": {
-      const item = tempContent.cloneNode(true).firstElementChild;
-      const anchor = item.querySelector("a")
-      anchor.textContent = materia ? materia.nombre : "Materias";
-      anchor.setAttribute("href", "/materias")
-      anchor.setAttribute("title", "Todas las materias")
-      breadcrumb.insertAdjacentElement("afterbegin", item);
-    }
-    case "/": {
-      const item = tempContent.cloneNode(true).firstElementChild;
-      const anchor = item.querySelector("a")
-      anchor.setAttribute("href", "/")
-      anchor.setAttribute("title", "Inicio")
-      anchor.innerHTML = `
-        <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
-        <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
-      `;
-      breadcrumb.insertAdjacentElement("afterbegin", item);
-    }
+  if (location.pathname == "/repos/agregar/") {
+    const item = tempContent.cloneNode(true).firstElementChild;
+    item.querySelector("a").textContent = "Agregar Repositorio";
+    breadcrumb.insertAdjacentElement("afterbegin", item);
+  }
+
+  if (tp) {
+    const item = tempContent.cloneNode(true).firstElementChild;
+    const anchor = item.querySelector("a")
+    anchor.textContent = tp.nombre;
+    anchor.setAttribute("href", `/repos?tp-id=${tp.id}`)
+    anchor.setAttribute("title", `Repositorios de ${tp.nombre}`)
+    breadcrumb.insertAdjacentElement("afterbegin", item);
+  }
+  
+  if (curso) {
+    const item = tempContent.cloneNode(true).firstElementChild;
+    const anchor = item.querySelector("a")
+    anchor.textContent = curso ? curso.nombre : "Cursos";
+    anchor.setAttribute("href", `/tps?curso-id=${curso.id}`)
+    anchor.setAttribute("title", `TPs de ${curso.nombre}`)
+    breadcrumb.insertAdjacentElement("afterbegin", item);
+  }
+    
+  if (materia) {
+    const item = tempContent.cloneNode(true).firstElementChild;
+    const anchor = item.querySelector("a")
+    anchor.textContent = materia ? materia.nombre : "Materias";
+    anchor.setAttribute("href", `/cursos?materia-id=${materia.id}`)
+    anchor.setAttribute("title", `Cursos de ${materia.nombre}`)
+    breadcrumb.insertAdjacentElement("afterbegin", item);
+  }
+
+  {
+    const item = tempContent.cloneNode(true).firstElementChild;
+    const anchor = item.querySelector("a")
+    anchor.textContent = "Materias";
+    anchor.setAttribute("href", "/materias")
+    anchor.setAttribute("title", "Todas las materias")
+    breadcrumb.insertAdjacentElement("afterbegin", item); 
+  }
+  
+  {
+    const item = tempContent.cloneNode(true).firstElementChild;
+    const anchor = item.querySelector("a")
+    anchor.setAttribute("href", "/")
+    anchor.setAttribute("title", "Inicio")
+    anchor.innerHTML = `
+    <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
+    <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
+    `;
+    breadcrumb.insertAdjacentElement("afterbegin", item);
   }
 })
