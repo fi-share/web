@@ -66,9 +66,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const anchor = item.querySelector("a")
     anchor.setAttribute("href", "/")
     anchor.setAttribute("title", "Inicio")
+    anchor.classList.add("min-w-fit")
     anchor.innerHTML = `
-    <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
-    <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
+      <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="inline h-10 invert">
+      <h1 class="inline text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
     `;
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }

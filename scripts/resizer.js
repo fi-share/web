@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
             resizable.style.width = `${e.pageX - resizable.clientLeft}px`;
         }
     }
+    function resizeTouch(e) {
+        if (isResizing) {
+            resizable.style.width = `${e.touches[0].pageX - resizable.clientLeft}px`;
+        }
+    }
     
     function stopResize() {
         if (isResizing) {
@@ -17,10 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
             isResizing = false;
         }
     }
+    function stopTouchResize() {
+        if (isResizing) {
+            document.removeEventListener('touchmove', resize);
+            document.removeEventListener('touchend', stopTouchResize);
+            isResizing = false;
+        }
+    }
     
     resizer.addEventListener('mousedown', (e) => {
         isResizing = true;
         document.addEventListener('mousemove', resize);
         document.addEventListener('mouseup', stopResize);
+    });
+    resizer.addEventListener('touchstart', (e) => {
+        isResizing = true;
+        document.addEventListener('touchmove', resizeTouch);
+        document.addEventListener('touchend', stopTouchResize);
     });
 });
