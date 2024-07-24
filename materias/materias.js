@@ -18,7 +18,7 @@ function parse_data(data){
     item.setAttribute("data-cuatri", data.materias[i].cuatrimestre);
 
     const card = document.createElement("a");
-    card.setAttribute("href", `../cursos?materia-id=${data.materias[i].id}`);
+    card.setAttribute("href", `/web/cursos?materia-id=${data.materias[i].id}`);
 
     const materia = document.createElement("p");
     materia.setAttribute("class", "dark:text-gray-50 text-xl font-medium tracking-wide text-left leading-tight");

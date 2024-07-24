@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
     anchor.textContent = tp.nombre;
-    anchor.setAttribute("href", `/repos?tp-id=${tp.id}`)
+    anchor.setAttribute("href", `/web/repos?tp-id=${tp.id}`)
     anchor.setAttribute("title", `Repositorios de ${tp.nombre}`)
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
     anchor.textContent = curso ? curso.nombre : "Cursos";
-    anchor.setAttribute("href", `/tps?curso-id=${curso.id}`)
+    anchor.setAttribute("href", `/web/tps?curso-id=${curso.id}`)
     anchor.setAttribute("title", `TPs de ${curso.nombre}`)
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
     anchor.textContent = materia ? materia.nombre : "Materias";
-    anchor.setAttribute("href", `/cursos?materia-id=${materia.id}`)
+    anchor.setAttribute("href", `/web/cursos?materia-id=${materia.id}`)
     anchor.setAttribute("title", `Cursos de ${materia.nombre}`)
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
     anchor.textContent = "Materias";
-    anchor.setAttribute("href", "/materias")
+    anchor.setAttribute("href", "/web/materias")
     anchor.setAttribute("title", "Todas las materias")
     breadcrumb.insertAdjacentElement("afterbegin", item); 
   }
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
-    anchor.setAttribute("href", "/")
+    anchor.setAttribute("href", "/web/")
     anchor.setAttribute("title", "Inicio")
     anchor.innerHTML = `
     <img src="https://fi-share.github.io/web/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">

@@ -48,7 +48,7 @@ function parse_data(data){
             item.setAttribute("class", "m-4 px-3 py-auto w-42 h- rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700");
 
             const card = document.createElement("a");
-            card.setAttribute("href", `../repos?tp-id=${data.curso.tps[i].id}`);
+            card.setAttribute("href", `/web/repos?tp-id=${data.curso.tps[i].id}`);
             card.setAttribute("class", "text-decoration-none");
 
             const tp = document.createElement("p");

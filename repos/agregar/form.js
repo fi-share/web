@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const access_token = localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!access_token) { 
         alert("Debe iniciar sesión")
-        location.href = location.origin;
+        location.href = location.origin + "/web";
     }
     const idTP = params.get("tp-id")
     if (!idTP) {
         alert("No se coloco el tp en la url")
-        location.href = location.origin;
+        location.href = location.origin + "/web";
     }
     const response = await fetch("https://api.github.com/user/repos", {
         headers: {
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!resp.ok)
                 throw new Error(resp.statusText)
             alert("Agregado correctamente")
-            location.href = "/repos" + location.search            
+            location.href = "/web/repos" + location.search            
         } catch (error) {
             alert(error)
             e.submitter.removeAttribute("disabled")
