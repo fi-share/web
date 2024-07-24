@@ -1,3 +1,5 @@
+import {URL_API} from "../config.js"
+
 function response_received(response){
     console.log("Response received");
     return response.json();
@@ -81,7 +83,7 @@ function filtrar_materias() {
 
 document.getElementById("filtro").addEventListener("change", filtrar_materias);
   
-  fetch("http://localhost:5000/materias")
+  fetch(`${URL_API}/materias`)
     .then(response_received)
     .then(parse_data)
     .then(filtrar_materias)
