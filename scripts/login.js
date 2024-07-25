@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       const { avatar_url, login, name, html_url, id } = await response.json();
 
       const containerPerfil = document.createElement("details");
-      containerPerfil.className = "relative";
+      containerPerfil.className = "relative flex-none self-start";
       containerPerfil.role = "container-perfil"
       containerPerfil.innerHTML = `
-      <summary class="list-none cursor-pointer">
-        <img src="${avatar_url}" alt="avatar" class="w-10 h-10 rounded-full shadow-2xl p-1">
+      <summary class="list-none cursor-pointer w-8 h-8">
+        <img src="${avatar_url}" alt="avatar" class="object-cover rounded-full shadow-2xl">
       </summary>
       <section class="absolute w-36 text-center right-full -translate-x-4 translate-y-4 text-indigo-900 z-50">
         <ul role="minidata-list" 
@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Colocar boton de iniciar sesion en header
     const btnLogin = document.createElement("button");
     btnLogin.className =
-      "ml-auto dark:bg-[#24292F] font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center dark:text-slate-400 hover:ring-2 dark:hover:ring-gray-500 transition duration-300 ease-in-out";
+      "ml-auto dark:bg-[#24292F] font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center justify-center gap-2 dark:text-slate-400 hover:ring-2 dark:hover:ring-gray-500 transition duration-300 ease-in-out";
     btnLogin.innerHTML = `
       Iniciar sesion con GitHub
-      <img src="https://fi-share.github.io/web/images/github.svg" alt="GitHub Logo"  class="w-4 h-4 invert ml-2">
+      <img src="https://fi-share.github.io/web/images/github.svg" alt="GitHub Logo"  class="w-4 h-4 invert">
       `;
     // Asignar funcion de redirigir a github
     btnLogin.addEventListener("click", () => {

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const { tp, curso, materia } = await getItems();
 
-  if (location.pathname == "/repos/agregar/") {
+  if (location.pathname == "web/repos/agregar/") {
     const item = tempContent.cloneNode(true).firstElementChild;
     item.querySelector("a").textContent = "Agregar Repositorio";
     breadcrumb.insertAdjacentElement("afterbegin", item);
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }
 
-  {
+  if (location.pathname == "/materias/" || materia) {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
     anchor.textContent = "Materias";
@@ -66,9 +66,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const anchor = item.querySelector("a")
     anchor.setAttribute("href", "/web/")
     anchor.setAttribute("title", "Inicio")
+    anchor.classList.add("min-w-fit")
     anchor.innerHTML = `
-    <img src="https://fi-share.github.io/web/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
-    <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
+    <span class="flex items-center">
+      <img src="https://fi-share.github.io/web/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
+      <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
+    </span>
     `;
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }

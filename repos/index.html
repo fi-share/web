@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="overflow-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,33 +11,36 @@
   </head>
 
   <body
-    class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[3.5rem_2fr] grid-cols-[auto_2fr] overflow-hidden h-[100vh]"
+    class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[auto_2fr] grid-cols-[auto_2fr] overflow-hidden h-screen"
   >
     <header
-      class="px-3 py-2 flex items-center justify-between dark:bg-indigo-950 col-span-full"
+      class="px-3 py-2 flex items-center justify-between dark:bg-indigo-950 col-span-full w-screen"
     >
       <template id="temp-breadcrumb-item">
         <div
-          class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center"
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
         >
           <a
             href=""
-            class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"
+            class="block cursor-pointer px-2 dark:text-gray-400 dark:hover:text-white max-w-44 truncate"
           ></a>
         </div>
       </template>
-      <nav id="breadcrumb" class="flex items-center"></nav>
+      <nav id="breadcrumb" class="flex items-center flex-wrap"></nav>
     </header>
-    <aside class="w-[33vw] min-w-[3vw] resizable-x">
+    <aside class="w-[33vw] min-w-8 resizable-x">
       <span class="resizer-right"></span>
-      <article
-        class="absolute inset-0 overflow-y-auto p-8 border-r border-white"
-      ></article>
+      <div class="absolute inset-0 overflow-y-auto overflow-x-hidden pr-8 border-r border-white">
+        <article
+        class="pl-8"
+        ></article>
+      </div>
     </aside>
-    <main class="bg-transparent relative">
+    <main class="overflow-y-auto p-4">
+      <h2 id="title-Repositorios" class="font-sans font-semibold mb-8 mt-4 text-2xl tracking-normal text-center dark:text-white">Repositorios</h2>
       <section
         id="container-cartas"
-        class="absolute inset-0 overflow-y-auto p-8 flex gap-16 flex-wrap justify-evenly items-center"
+        class="min-h-[90%] flex gap-16 flex-wrap justify-evenly items-center"
       >
         <template id="temp-carta">
           <div

@@ -2,16 +2,21 @@
     position: relative;
 }
 .resizer-right {
+    content: url(/images/resize-x.svg);
     position: absolute;
     z-index: 10;
     top: 1rem;
     bottom: 1rem;
     right: 0;
+    padding: 0.5rem;
     width: 2rem;
+    height: 100%;
     background: transparent;
     cursor: ew-resize;
     user-select: none;
+    display: grid;
+    place-content: center;
 }
-.resizer-right + article {
+.resizer-right + div {
     right: 2rem;
 }

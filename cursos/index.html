@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="overflow-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +8,24 @@
   <title>FI Share</title>
 </head>
 
-<body class="dark dark:bg-gray-950 scroll-smooth">
-  <header class="px-3 py-2 h-14 flex items-center justify-between dark:bg-indigo-950 ">
-    <template id="temp-breadcrumb-item">
-      <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
-        <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
-      </div>
-    </template>
-    <nav id="breadcrumb" class="flex items-center">
-    </nav>
-  </header>
+<body
+    class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[auto_2fr] grid-cols-[auto_2fr] overflow-hidden h-screen"
+  >
+    <header
+      class="px-2 py-2 flex items-center justify-between dark:bg-indigo-950 col-span-full w-screen"
+    >
+      <template id="temp-breadcrumb-item">
+        <div
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
+        >
+          <a
+            href=""
+            class="block cursor-pointer px-2 dark:text-gray-400 dark:hover:text-white max-w-44 capitalize truncate"
+          ></a>
+        </div>
+      </template>
+      <nav id="breadcrumb" class="flex items-center flex-wrap"></nav>
+    </header>
 
   <main class="mt-5">
     <p class="pb-1 font-sans font-semibold lg:text-3xl tracking-normal text-center w-4/6 mx-auto dark:text-white">Cursos de</p>

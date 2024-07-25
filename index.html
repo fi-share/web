@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="overflow-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +8,40 @@
   <title>FI Share</title>
 </head>
 
-<body class="dark dark:bg-gray-950 scroll-smooth">
-  <header class="px-3 py-2 h-14 flex items-center justify-between dark:bg-indigo-950 ">
-    <template id="temp-breadcrumb-item">
-      <div class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center">
-        <a href="" class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"></a>
-      </div>
-    </template>
-    <nav id="breadcrumb" class="flex items-center">
-    </nav>
-  </header>
+<body
+    class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[auto_2fr] overflow-hidden h-screen"
+  >
+    <header
+      class="px-3 py-2 flex items-center justify-between dark:bg-indigo-950 col-span-full w-screen"
+    >
+      <template id="temp-breadcrumb-item">
+        <div
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
+        >
+          <a
+            href=""
+            class="block cursor-pointer px-2 dark:text-gray-400 dark:hover:text-white max-w-44 truncate"
+          ></a>
+        </div>
+      </template>
+      <nav id="breadcrumb" class="flex items-center flex-wrap"></nav>
+    </header>
   
-  <main class="pt-5">
-    <img class="w-1/4 mx-auto pt-10" src="images/FI_Share-dark.svg" alt="Logo de Fi Share">
-    
-    <p class="pt-6 font-sans font-extrabold  lg:text-2xl tracking-tight text-center w-4/6 mx-auto dark:text-slate-400">
-      Es un lugar donde compartir y ver los trabajos prácticos de cualquier materia y curso de cumputación de la Facultad de Ingeniería de la Facultad de Buenos Aires (FIUBA).
-    </p>
-    
-    <p class="mt-5 font-mono text-base text-center w-8/12	 mx-auto dark:text-slate-600">
-      Compara otros trabajos prácticos, saca nuevas ideas, guíate para un trabajo a entregar. Publica tu repositorio a los demas estudiantes para que ellos puedan ver el trabajo con el que tanto te esforzaste durante el cuatrimestre.
-    </p>
+  <main class="grid items-center gap-8 p-4 pt-16 overflow-auto">
+    <div>
+      <img class="h-[25vh] mx-auto" src="images/FI_Share-dark.svg" alt="Logo de Fi Share">
+      
+      <p class="pt-6 font-sans font-extrabold  lg:text-2xl tracking-tight text-center w-4/6 mx-auto dark:text-slate-400">
+        Es un lugar donde compartir y ver los trabajos prácticos de cualquier materia y curso de cumputación de la Facultad de Ingeniería de la Facultad de Buenos Aires (FIUBA).
+      </p>
+      
+      <p class="mt-5 font-mono text-base text-center w-8/12	 mx-auto dark:text-slate-600">
+        Compara otros trabajos prácticos, saca nuevas ideas, guíate para un trabajo a entregar. Publica tu repositorio a los demas estudiantes para que ellos puedan ver el trabajo con el que tanto te esforzaste durante el cuatrimestre.
+      </p>
+    </div>
 
-    <a href="/web/materias/" class="flex items-center float-right mr-5 mt-9 cursor-pointer dark:text-blue-700 dark:hover:text-slate-400">
-      <p class="text-xl font-normal">Materias</p>
+    <a href="web/materias/" class="flex items-center w-fit self-end justify-self-end cursor-pointer dark:text-blue-700 dark:hover:text-slate-400">
+      <span class="text-xl font-normal">Materias</span>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24">
         <path fill="currentColor" d="M8.59 17.34l4.58-4.59-4.58-4.59L10 6.75l6 6-6 6z"/>
         <path fill="currentColor" d="M17.59 17.34l4.58-4.59-4.58-4.59L19 6.75l6 6-6 6z"/>
