@@ -7,6 +7,7 @@ function parse_data(data){
   console.log(data);
 
   const container = document.getElementById("materias");
+  container.innerHTML = "";
 
   for (let i = 0; i < data.materias.length; i++) {
     const item = document.createElement("div");
@@ -38,8 +39,19 @@ function parse_data(data){
 }
 
 function request_error(error){
-  console.log("Error ");
-  console.log(error);
+  const reload = document.createElement("button")
+  reload.innerHTML = `
+  <img src="../images/reload.svg" alt="Recargar pagina"/>
+  `
+  reload.className = "border border-white opacity-35 hover:opacity-100 rounded-lg w-16 h-16 p-2"
+  alert(error + "\n\nEs muy probable que sea devido a que el servidor backend se esté levantando, recarga el contenido.");
+  reload.onclick = () => {
+    buscar_materias();
+    reload.outerHTML = '<span class="loader-spinner"></span>'
+  }
+  const container = document.getElementById("materias");
+  container.innerHTML = "";
+  container.appendChild(reload)
 }
 
 function filtrar_materias() {
@@ -80,8 +92,11 @@ function filtrar_materias() {
 
 document.getElementById("filtro").addEventListener("change", filtrar_materias);
   
+function buscar_materias() {
   fetch("http://localhost:5000/materias")
-    .then(response_received)
-    .then(parse_data)
-    .then(filtrar_materias)
-    .catch(request_error)
+  .then(response_received)
+  .then(parse_data)
+  .then(filtrar_materias)
+  .catch(request_error)
+}
+document.addEventListener("DOMContentLoaded", buscar_materias)
