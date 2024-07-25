@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         const card = document.createElement("a");
-        card.setAttribute("href", `web/repos?tp-id=${data.curso.tps[i].id}`);
+        card.setAttribute("href", `/web/repos?tp-id=${data.curso.tps[i].id}`);
         card.setAttribute("class", "text-decoration-none");
 
         const tp = document.createElement("p");
