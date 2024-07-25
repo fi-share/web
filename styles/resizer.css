@@ -2,7 +2,7 @@
     position: relative;
 }
 .resizer-right {
-    content: url(/images/resize-x.svg);
+    content: url(../images/resize-x.svg);
     position: absolute;
     z-index: 10;
     top: 1rem;
