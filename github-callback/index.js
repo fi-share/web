@@ -4,12 +4,16 @@ const urlParams = new URLSearchParams(location.search);
 const code = urlParams.get("code");
 const state = urlParams.get("state");
 
-if (!code || !state) {
+if (!state) {
   alert("Github no respondío con lo esperado");
-  location.href = location.origin;
+  history.go(-2)
 }
 
 const redirect = location.origin + atob(state);
+if (!code) {
+  alert("Github no respondío con lo esperado");
+  location.href = redirect
+}
 
 fetch(URL_API + "/exchange-code", {
   method: "POST",
