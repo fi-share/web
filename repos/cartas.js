@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!repositorios.length) {
       const mensaje = document.createElement("p");
-      mensaje.className = "text-2xl font-bold";
+      mensaje.className = "text-2xl font-bold text-center";
       mensaje.textContent =
         "¡Sé el primero en agregar un repositorio para este trabajo práctico!";
       container.appendChild(mensaje);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="overflow-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,97 +9,101 @@
   </head>
 
   <body
-    class="dark dark:bg-gray-950 scroll-smooth grid grid-rows-[3.5rem_2fr] h-[100vh]"
+    class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[auto_2fr] overflow-hidden h-screen"
   >
     <header
-      class="px-3 py-2 h-14 flex items-center justify-between dark:bg-indigo-950"
+      class="px-3 py-2 flex items-center justify-between dark:bg-indigo-950 w-screen"
     >
       <template id="temp-breadcrumb-item">
         <div
-          class="last:pointer-events-none [&:not(:last-child)]:after:content-['>'] [&:not(:last-child)]:after:px-4 after:text-white after:font-black after:opacity-50 flex items-center"
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
         >
           <a
             href=""
-            class="cursor-pointer px-2 text-2xl font-medium dark:text-gray-400 dark:hover:text-white flex items-center"
+            class="block cursor-pointer px-2 dark:text-gray-400 dark:hover:text-white max-w-44 truncate"
           ></a>
         </div>
       </template>
-      <nav id="breadcrumb" class="flex items-center"></nav>
+      <nav id="breadcrumb" class="flex items-center flex-wrap"></nav>
     </header>
-    <main class="mx-auto grid place-content-center">
-      <form id="form-agregar" class="grid place-content-center">
-        <div class="flex gap-x-16 justify-evenly items-center">
-          <fieldset class="w-96 border border-white px-2 py-1">
-            <legend
-              class="dark:text-white text-xl font-semibold block mx-auto px-2"
+    <main class="mx-auto p-8 overflow-y-auto">
+      <div>
+        <form id="form-agregar" class="grid place-content-center h-full">
+          <div class="flex gap-16 justify-evenly items-center flex-wrap">
+            <fieldset
+              id="seleccionar-repo"
+              class="sm:w-[32rem] w-64 border border-white px-2 py-1 flex-auto"
             >
-              Información
-            </legend>
-            <div class="mb-2">
-              <label
-                for="titulo"
-                class="block mb-2 text-lg text-gray-900 dark:text-white"
-                >Titulo</label
+              <legend
+                class="dark:text-white text-xl font-semibold block mx-auto px-2"
               >
-              <input
-                type="text"
-                name="titulo"
-                id="titulo"
-                class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Titulo del repositorio"
-                required
-              />
-            </div>
-            <input type="hidden" id="id_repo" name="id" />
-            <input type="hidden" id="id_usuario" name="id_usuario" />
-            <div class="mb-2">
-              <label for="descripcion" class="block mb-2 dark:text-white"
-                >Descripción</label
-              >
-              <textarea
-                name="descripcion"
-                id="descripcion"
-                rows="8"
-                class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Descripción del repositorio"
-              ></textarea>
-            </div>
-          </fieldset>
-          <fieldset
-            id="seleccionar-repo"
-            class="w-[36rem] border border-white px-2 py-1"
-          >
-            <legend
-              class="dark:text-white text-xl font-semibold block mx-auto px-2"
+                Seleccionar repositorio
+              </legend>
+              <template id="temp-repo">
+                <div class="mb-2">
+                  <input
+                    type="radio"
+                    class="peer hidden"
+                    id=""
+                    name="full_name"
+                    value=""
+                    required
+                  />
+                  <label
+                    for=""
+                    class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700"
+                  >
+                  </label>
+                </div>
+              </template>
+            </fieldset>
+            <fieldset
+              class="sm:w-[32rem] w-64 border border-white px-2 py-1 flex-auto"
             >
-              Seleccionar repositorio
-            </legend>
-            <template id="temp-repo">
+              <legend
+                class="dark:text-white text-xl font-semibold block mx-auto px-2"
+              >
+                Información
+              </legend>
               <div class="mb-2">
+                <label
+                  for="titulo"
+                  class="block mb-2 text-lg text-gray-900 dark:text-white"
+                  >Titulo</label
+                >
                 <input
-                  type="radio"
-                  class="peer hidden"
-                  id=""
-                  name="full_name"
-                  value=""
+                  type="text"
+                  name="titulo"
+                  id="titulo"
+                  class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="Titulo del repositorio"
                   required
                 />
-                <label
-                  for=""
-                  class="text-sm rounded-sm block w-full p-4 dark:text-white cursor-pointer peer-checked:bg-gray-700"
-                >
-                </label>
               </div>
-            </template>
-          </fieldset>
-        </div>
-        <button
-          type="submit"
-          class="px-5 py-2.5 mt-8 text-center text-white rounded-sm hover:bg-indigo-950 border border-white disabled:bg-indigo-950 disabled:opacity-35 disabled:pointer-events-none"
-        >
-          Agregar
-        </button>
-      </form>
+              <input type="hidden" id="id_repo" name="id" />
+              <input type="hidden" id="id_usuario" name="id_usuario" />
+              <div class="mb-2">
+                <label for="descripcion" class="block mb-2 dark:text-white"
+                  >Descripción</label
+                >
+                <textarea
+                  name="descripcion"
+                  id="descripcion"
+                  rows="8"
+                  class="border text-sm rounded-sm block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="Descripción del repositorio"
+                ></textarea>
+              </div>
+            </fieldset>
+          </div>
+          <button
+            type="submit"
+            class="px-5 py-2.5 mt-8 text-center text-white rounded-sm hover:bg-indigo-950 border border-white disabled:bg-indigo-950 disabled:opacity-35 disabled:pointer-events-none"
+          >
+            Agregar
+          </button>
+        </form>
+      </div>
     </main>
 
     <script src="form.js" type="module"></script>

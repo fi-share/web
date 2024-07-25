@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       const { avatar_url, login, name, html_url, id } = await response.json();
 
       const containerPerfil = document.createElement("details");
-      containerPerfil.className = "relative";
+      containerPerfil.className = "relative flex-none self-start";
       containerPerfil.role = "container-perfil"
       containerPerfil.innerHTML = `
-      <summary class="list-none cursor-pointer">
-        <img src="${avatar_url}" alt="avatar" class="w-10 h-10 rounded-full shadow-2xl p-1">
+      <summary class="list-none cursor-pointer w-8 h-8">
+        <img src="${avatar_url}" alt="avatar" class="object-cover rounded-full shadow-2xl">
       </summary>
       <section class="absolute w-36 text-center right-full -translate-x-4 translate-y-4 text-indigo-900 z-50">
         <ul role="minidata-list" 

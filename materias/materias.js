@@ -7,11 +7,10 @@ function parse_data(data){
   console.log(data);
 
   const container = document.getElementById("materias");
-  container.setAttribute("class", "px-10 my-5 flex flex-row flex-wrap gap-10 mx-auto justify-center");
 
   for (let i = 0; i < data.materias.length; i++) {
     const item = document.createElement("div");
-    item.setAttribute("class", "block px-3 py-3 w-72 h-40 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700");
+    item.setAttribute("class", "block px-3 py-3 w-72 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700");
     item.setAttribute("data-anio", data.materias[i].anio);
     item.setAttribute("data-cuatri", data.materias[i].cuatrimestre);
 

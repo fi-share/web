@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }
 
-  {
+  if (location.pathname == "/materias/" || materia) {
     const item = tempContent.cloneNode(true).firstElementChild;
     const anchor = item.querySelector("a")
     anchor.textContent = "Materias";
@@ -68,8 +68,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     anchor.setAttribute("title", "Inicio")
     anchor.classList.add("min-w-fit")
     anchor.innerHTML = `
-      <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="inline h-10 invert">
-      <h1 class="inline text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
+    <span class="flex items-center">
+      <img src="/images/icono-sin-fondo.png" alt="Logo de Fi Share" class="h-10 invert">
+      <h1 class="text-2xl font-bold dark:text-slate-50 tracking-tight">Fi Share</h1>
+    </span>
     `;
     breadcrumb.insertAdjacentElement("afterbegin", item);
   }
