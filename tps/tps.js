@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reload.className = "border border-white opacity-35 hover:opacity-100 rounded-lg w-16 h-16 p-2"
     alert(error + "\n\nEs muy probable que sea devido a que el servidor backend se esté levantando, recarga el contenido.");
     reload.onclick = () => {
-      buscar_cursos();
+      buscar_tps();
       reload.outerHTML = '<span class="loader-spinner"></span>'
     }
     const container = document.getElementById("tps");
