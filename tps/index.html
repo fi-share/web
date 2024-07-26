@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="es" class="overflow-hidden">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/images/icono.ico" type="image/ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>FI Share</title>
-  <link rel="stylesheet" href="../styles/resizer.css">
-  <link rel="stylesheet" href="../styles/article.css">
-  <link rel="stylesheet" href="../styles/loader.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/icono.ico" type="image/ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FI Share</title>
+    <link rel="stylesheet" href="../styles/resizer.css" />
+    <link rel="stylesheet" href="../styles/article.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
+  </head>
 
-<body
+  <body
     class="dark text-white dark:bg-gray-950 scroll-smooth grid grid-rows-[auto_2fr] grid-cols-[auto_2fr] overflow-hidden h-screen"
   >
     <header
@@ -30,43 +30,58 @@
       <nav id="breadcrumb" class="flex items-center flex-wrap">
         <div
           class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
-        ><span class="loader-continuous"></span>
+        >
+          <span class="loader-continuous"></span>
         </div>
         <div
           class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
-        ><span class="loader-continuous"></span>
+        >
+          <span class="loader-continuous"></span>
         </div>
         <div
           class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
-        ><span class="loader-continuous"></span>
+        >
+          <span class="loader-continuous"></span>
         </div>
         <div
           class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
-        ><span class="loader-continuous"></span>
+        >
+          <span class="loader-continuous"></span>
         </div>
       </nav>
     </header>
 
     <aside class="w-[33vw] min-w-8 resizable-x">
       <span class="resizer-right"></span>
-      <div class="absolute inset-0 overflow-y-auto overflow-x-hidden pr-8 border-r border-white">
-        <article
-        class="pl-8"
-        >
-        <p id="nombre_tp" class="text-lg mb-2 justify-center font-semibold"></p>
-        <p id="descripcion" class="text-justify pr-1"></p>
-      </article>
+      <div
+        class="absolute inset-0 overflow-y-auto overflow-x-hidden pr-8 border-r border-white"
+      >
+        <article class="pl-8">
+          <p
+            id="nombre_tp"
+            class="text-lg mb-2 justify-center font-semibold"
+          ></p>
+          <p id="descripcion" class="text-justify pr-1"></p>
+        </article>
       </div>
     </aside>
     <main class="flex-1 m-5 items-center overflow-auto">
-      <p class="pb-1 font-sans font-semibold lg:text-3xl tracking-normal text-center w-4/6 mx-auto dark:text-white">TPs de</p>
-      <p id="curso" class="mb-7 font-sans font-semibold lg:text-3xl tracking-normal text-center w-4/6 mx-auto dark:text-white"></p>
-      <div id="tps"></div>
+      <h2
+        id="curso"
+        class="font-sans font-semibold mb-8 text-4xl tracking-normal text-center dark:text-white"
+      >
+        TPs de <span class="loader-continuous inline-block w-64 h-7"></span>
+      </h2>
+      <div class="grid place-content-center min-h-[85%]">
+        <div id="tps" class="flex gap-8 flex-wrap justify-evenly items-center">
+          <span class="loader-spinner"></span>
+        </div>
+      </div>
     </main>
 
-  <script src="tps.js" type="module"></script>
-  <script src="/scripts/resizer.js" type="module"></script>
-  <script src="/scripts/login.js" type="module"></script>
-  <script src="/scripts/breadcrumb.js" type="module"></script>
-</body>
+    <script src="tps.js" type="module"></script>
+    <script src="/scripts/resizer.js" type="module"></script>
+    <script src="/scripts/login.js" type="module"></script>
+    <script src="/scripts/breadcrumb.js" type="module"></script>
+  </body>
 </html>
