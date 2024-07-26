@@ -5,6 +5,7 @@ const params = new URLSearchParams(location.search);
 async function get_descripcion_tp(idTP) {
     try {
         const resp = await fetch(`${URL_API}/tps/${idTP}/descripcion_html`)
+        if (!resp.ok) throw Error(resp.statusText)
         return await resp.text()
     } catch (error) {
         const reload = document.createElement("button");
@@ -19,9 +20,9 @@ async function get_descripcion_tp(idTP) {
         );
         reload.onclick = () => {
         colocar_descripcion_tp();
-        reload.outerHTML = '<span class="loader-spinner block mx-auto"></span>';
+        reload.outerHTML = '<span class="loader-spinner"></span>';
         };
-        const container = document.querySelector("article");
+        const container = document.getElementById("load");
         container.innerHTML = "";
         container.appendChild(reload);
         return null;
@@ -32,8 +33,10 @@ async function colocar_descripcion_tp() {
     const idTP = params.get("tp-id")
     if (idTP) {
         const descripcion = await get_descripcion_tp(idTP);
-        if (descripcion)
+        if (descripcion) {
+            document.getElementById("load").remove();
             document.querySelector("article").innerHTML = descripcion
+        }
     }
 }
 

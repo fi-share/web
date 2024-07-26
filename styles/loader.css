@@ -2,6 +2,7 @@
 
 /* HTML: <div class="loader"></div> */
 .loader-spinner {
+  display: block;
     width: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
