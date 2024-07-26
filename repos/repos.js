@@ -6,30 +6,94 @@ const GITHUB_API_URL = "https://api.github.com";
 const params = new URLSearchParams(location.search);
 const access_token = localStorage.getItem(ACCESS_TOKEN_KEY);
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const tempContent = document.getElementById("temp-carta").content;
-  const container = document.getElementById("container-cartas");
-  const idTP = params.get("tp-id");
-  if (idTP) {
+const idTP = params.get("tp-id");
+if (!idTP) {
+  alert("No se encuentra el tp en la url");
+  location.href = location.origin;
+}
+
+function colocar_btn_agregar() {
+  const linkNuevo = document.createElement("a");
+  linkNuevo.className =
+    "cursor-pointer float-right ml-2 mb-2 w-12 h-12 text-center text-4xl dark:text-gray-400 dark:hover:text-white rounded-lg border border-gray-400 hover:border-white";
+  linkNuevo.setAttribute("href", "/repos/agregar" + location.search);
+  linkNuevo.textContent = "+";
+
+  document
+    .getElementById("title-Repositorios")
+    .insertAdjacentElement("beforebegin", linkNuevo);
+}
+
+async function get_repositorios() {
+  try {
     const resp = await fetch(`${URL_API}/tps/${idTP}/repositorios`);
-    const repositorios = await resp.json();
-    const inputHiddenId = document.querySelector(
-      'input[type="hidden"][name="id"]'
+    return await resp.json();
+  } catch (error) {
+    const reload = document.createElement("button");
+    reload.innerHTML = `
+    <img src="../images/reload.svg" alt="Recargar pagina"/>
+    `;
+    reload.className =
+      "border border-white opacity-35 hover:opacity-100 rounded-lg w-16 h-16 p-2";
+    alert(
+      error +
+        "\n\nEs muy probable que sea devido a que el servidor backend se esté levantando, recarga el contenido."
     );
-    let id_usuario_en_maquina = null;
-    if (inputHiddenId) {
-      id_usuario_en_maquina = inputHiddenId.value;
+    reload.onclick = () => {
+      buscar_repos();
+      reload.outerHTML = '<span class="loader-spinner"></span>';
+    };
+    const container = document.getElementById("container-repos");
+    container.innerHTML = "";
+    container.appendChild(reload);
+    return null;
+  }
+}
+async function get_id_en_maquina() {
+  const response = await fetch("https://api.github.com/user", {
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${access_token}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+  return (await response.json()).id;
+}
+async function get_contributors(full_name) {
+  const contributorsResponse = await fetch(
+    `${GITHUB_API_URL}/repos/${full_name}/contributors`,
+    {
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    }
+  );
+  return await contributorsResponse.json();
+}
+
+async function buscar_repos() {
+  const tempContent = document.getElementById("temp-carta").content;
+  const container = document.getElementById("container-repos");
+
+  const repositorios = await get_repositorios();
+  console.log(repositorios);
+  if (repositorios === null) return;
+
+  container.innerHTML = "";
+
+  if (!repositorios.length) {
+    const mensaje = document.createElement("p");
+    mensaje.className = "text-2xl font-bold text-center";
+    mensaje.textContent =
+      "¡Sé el primero en agregar un repositorio para este trabajo práctico!";
+    container.appendChild(mensaje);
+  } else {
+    if (access_token) {
+      var id_usuario_en_maquina = await get_id_en_maquina();
+      colocar_btn_agregar();
     }
     repositorios.forEach(
       async ({ id, full_name, titulo, descripcion, id_usuario }) => {
-        const contributorsResponse = await fetch(
-          `${GITHUB_API_URL}/repos/${full_name}/contributors`,
-          {
-            Accept: "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-          }
-        );
-        const contributors = await contributorsResponse.json();
+        const contributors = await get_contributors(full_name);
 
         const carta = tempContent.cloneNode(true).firstElementChild;
 
@@ -75,30 +139,32 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </svg>
                     `;
             submitBtn.onclick = async () => {
-                const formData = new FormData(form);
-                try {
-                    const response = await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
-                      method: "PUT",
-                      body: formData,
-                      headers: {
-                          Authorization: `Bearer ${access_token}`,
-                        },
-                    })
+              const formData = new FormData(form);
+              try {
+                const response = await fetch(
+                  `${URL_API}/tps/${idTP}/repositorios/${id}`,
+                  {
+                    method: "PUT",
+                    body: formData,
+                    headers: {
+                      Authorization: `Bearer ${access_token}`,
+                    },
+                  }
+                );
 
-                    const { titulo, descripcion } = await response.json()
-                    tituloElement.value = titulo;
-                    descripcionElement.value = descripcion;
+                const { titulo, descripcion } = await response.json();
+                tituloElement.value = titulo;
+                descripcionElement.value = descripcion;
 
-                    form.setAttribute("aria-disabled", "");
-                    tituloElement.setAttribute("disabled", "");
-                    descripcionElement.setAttribute("disabled", "");
+                form.setAttribute("aria-disabled", "");
+                tituloElement.setAttribute("disabled", "");
+                descripcionElement.setAttribute("disabled", "");
 
-                    floats.innerHTML = "";
-                    floats.append(editBtn);
-                    
-                } catch (error) {
-                    alert(error)
-                }
+                floats.innerHTML = "";
+                floats.append(editBtn);
+              } catch (error) {
+                alert(error);
+              }
             };
             floats.appendChild(submitBtn);
 
@@ -128,19 +194,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </svg>
                     `;
             deleteBtn.onclick = async () => {
-                try {
-                    await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
-                        method: "DELETE",
-                        headers: {
-                            Authorization: `Bearer ${access_token}`,
-                        },
-                    })
-                    alert(`${titulo} eliminado de FI Share correctamente`)
-                } catch (error) {
-                    alert(error);
-                } finally {
-                    location.reload();
-                }
+              try {
+                await fetch(`${URL_API}/tps/${idTP}/repositorios/${id}`, {
+                  method: "DELETE",
+                  headers: {
+                    Authorization: `Bearer ${access_token}`,
+                  },
+                });
+                alert(`${titulo} eliminado de FI Share correctamente`);
+              } catch (error) {
+                alert(error);
+              } finally {
+                location.reload();
+              }
             };
             floats.appendChild(deleteBtn);
           };
@@ -155,13 +221,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.appendChild(carta);
       }
     );
-
-    if (!repositorios.length) {
-      const mensaje = document.createElement("p");
-      mensaje.className = "text-2xl font-bold text-center";
-      mensaje.textContent =
-        "¡Sé el primero en agregar un repositorio para este trabajo práctico!";
-      container.appendChild(mensaje);
-    }
   }
-});
+}
+document.addEventListener("DOMContentLoaded", buscar_repos);
