@@ -6,6 +6,7 @@
   <link rel="icon" href="https://fi-share.github.io/web/images/icono.ico" type="image/ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>FI Share</title>
+  <link rel="stylesheet" href="styles/loader.css">
 </head>
 
 <body
@@ -24,7 +25,12 @@
           ></a>
         </div>
       </template>
-      <nav id="breadcrumb" class="flex items-center flex-wrap"></nav>
+      <nav id="breadcrumb" class="flex items-center flex-wrap">
+        <div
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
+        ><span class="loader-continuous"></span>
+        </div>
+      </nav>
     </header>
   
   <main class="grid items-center gap-8 p-4 pt-16 overflow-auto">

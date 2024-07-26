@@ -13,10 +13,10 @@ function parse_data(data){
     console.log(data);
 
     const materia = document.getElementById("materia");
-    materia.append(data.materia.nombre);
+    materia.textContent = "Cursos de " + data.materia.nombre;
 
     const container = document.getElementById("cursos");
-    container.setAttribute("class", "px-10 pt-5 my-5 flex flex-row flex-wrap gap-10 mx-auto justify-center");
+    container.innerHTML = "";
 
     for(let i = 0; i < data.materia.cursos.length ;i++){
         console.log(data.materia.cursos[i].nombre);
@@ -40,11 +40,25 @@ function parse_data(data){
 }
 
 function request_error(error){
-    console.log("Request error");
-    console.log(error); 
+  const reload = document.createElement("button")
+  reload.innerHTML = `
+  <img src="../images/reload.svg" alt="Recargar pagina"/>
+  `
+  reload.className = "border border-white opacity-35 hover:opacity-100 rounded-lg w-16 h-16 p-2"
+  alert(error + "\n\nEs muy probable que sea devido a que el servidor backend se esté levantando, recarga el contenido.");
+  reload.onclick = () => {
+    buscar_cursos();
+    reload.outerHTML = '<span class="loader-spinner"></span>'
+  }
+  const container = document.getElementById("cursos");
+  container.innerHTML = "";
+  container.appendChild(reload)
 }
 
-fetch(`${URL_API}/materias/${id_materia}`)
+function buscar_cursos() {
+    fetch(`${URL_API}/materias/${id_materia}`)
     .then(response_received)
     .then(parse_data)
     .catch(request_error)
+}
+document.addEventListener("DOMContentLoaded", buscar_cursos)

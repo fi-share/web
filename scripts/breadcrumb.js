@@ -19,7 +19,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const { tp, curso, materia } = await getItems();
 
-  if (location.pathname == "web/repos/agregar/") {
+  breadcrumb.innerHTML = "";
+
+  breadcrumb.innerHTML = "";
+
+  if (location.pathname == "/web/repos/agregar/") {
     const item = tempContent.cloneNode(true).firstElementChild;
     item.querySelector("a").textContent = "Agregar Repositorio";
     breadcrumb.insertAdjacentElement("afterbegin", item);

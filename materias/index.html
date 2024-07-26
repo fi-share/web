@@ -7,10 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>FI Share</title>
     <link rel="stylesheet" href="../styles/resizer.css">
+    <link rel="stylesheet" href="../styles/loader.css">
   </head>
 
   <body
-    class="dark text-white dark:bg-gray-950 scroll-smooth grid gap-x-2 grid-rows-[auto_2fr] grid-cols-[auto_auto] overflow-hidden h-screen"
+    class="dark text-white dark:bg-gray-950 scroll-smooth grid gap-x-2 grid-rows-[auto_2fr] grid-cols-[auto_2fr] overflow-hidden h-screen"
   >
     <header
       class="px-3 py-2 flex items-center justify-between dark:bg-indigo-950 col-span-full w-screen"
@@ -25,7 +26,16 @@
           ></a>
         </div>
       </template>
-      <nav id="breadcrumb" class="flex items-center flex-wrap"></nav>
+      <nav id="breadcrumb" class="flex items-center flex-wrap">
+        <div
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
+        ><span class="loader-continuous"></span>
+        </div>
+        <div
+          class="min-w-fit first:text-xl text-lg [&:not(:first-child)]:before:content-['>'] [&:not(:first-child)]:before:mx-4 before:text-white before:font-black before:opacity-50 flex items-center"
+        ><span class="loader-continuous"></span>
+        </div>
+      </nav>
     </header>
     <aside id="default-sidebar" class="w-[33vw] min-w-8 max-w-full resizable-x">
       <span class="resizer-right"></span>
@@ -185,8 +195,9 @@
     </h2>
       <div
       id="materias"
-      class="flex gap-16 flex-wrap justify-evenly items-center"
+      class="min-h-[90%] flex gap-16 flex-wrap justify-evenly items-center"
       >
+      <span class="loader-spinner"></span>
 
     </div>
     </main>

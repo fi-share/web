@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(data);
 
     const curso = document.getElementById("curso");
-    curso.append(data.curso.nombre);
+    curso.textContent = "TPs de " + data.curso.nombre;
 
     if (data.curso.tps.length === 0) {
       const alerta = document.createElement("div");
@@ -45,10 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       aside.classList.add("w-1/4");
 
       const container = document.getElementById("tps");
-      container.setAttribute(
-        "class",
-        "px-10 pt-5 my-5 flex flex-row flex-wrap gap-10 mx-auto justify-center"
-      );
+      container.innerHTML="";
 
       for (let i = 0; i < data.curso.tps.length; i++) {
         const item = document.createElement("div");
@@ -95,12 +92,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function request_error(error) {
-    console.log("Request error");
-    console.log(error);
+    const reload = document.createElement("button")
+    reload.innerHTML = `
+    <img src="../images/reload.svg" alt="Recargar pagina"/>
+    `
+    reload.className = "border border-white opacity-35 hover:opacity-100 rounded-lg w-16 h-16 p-2"
+    alert(error + "\n\nEs muy probable que sea devido a que el servidor backend se esté levantando, recarga el contenido.");
+    reload.onclick = () => {
+      buscar_cursos();
+      reload.outerHTML = '<span class="loader-spinner"></span>'
+    }
+    const container = document.getElementById("tps");
+    container.innerHTML = "";
+    container.appendChild(reload)
   }
 
-  fetch(`${URL_API}/cursos/${id_curso}`)
-    .then(response_received)
-    .then(parse_data)
-    .catch(request_error);
+  function buscar_tps() {
+    fetch(`${URL_API}/cursos/${id_curso}`)
+      .then(response_received)
+      .then(parse_data)
+      .catch(request_error);
+  }
+  buscar_tps();
 });
